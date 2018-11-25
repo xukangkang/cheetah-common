@@ -2,16 +2,25 @@ package org.kk.cheetah.common.model.response;
 
 import java.io.Serializable;
 
-import org.msgpack.annotation.MessagePackBeans;
+import org.msgpack.annotation.Message;
+import org.msgpack.annotation.MessagePackMessage;
 
-@MessagePackBeans
-public class ConsumerRecord<K, V> implements Serializable {
-
-    private K key;
+@Message
+public class ConsumerRecord<K, V> implements Serializable{
+	
+	private K key;
     private V data;
     private long offset;
+    private String test;
+    public String getTest() {
+		return test;
+	}
 
-    public K getKey() {
+	public void setTest(String test) {
+		this.test = test;
+	}
+
+	public K getKey() {
         return key;
     }
 
@@ -34,4 +43,9 @@ public class ConsumerRecord<K, V> implements Serializable {
     public void setOffset(long offset) {
         this.offset = offset;
     }
+
+	@Override
+	public String toString() {
+		return "ConsumerRecord [key=" + key + ", data=" + data + ", offset=" + offset + ", test=" + test + "]";
+	}
 }
