@@ -5,25 +5,27 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class ConsumerRecords<K, V> implements Iterable<ConsumerRecord<K, V>>, ServerResponse ,Serializable{
+public class ConsumerRecords<K, V> extends AbstractServerResponse
+        implements Iterable<ConsumerRecord<K, V>>, Serializable {
 
     private List<ConsumerRecord<K, V>> consumberRecords;
 
     private String onlyTag;
-    public void setOnlyTag(String onlyTag) {
-		this.onlyTag = onlyTag;
-	}
 
-	public ConsumerRecords() {
+    public void setOnlyTag(String onlyTag) {
+        this.onlyTag = onlyTag;
+    }
+
+    public ConsumerRecords() {
         this.consumberRecords = new ArrayList<ConsumerRecord<K, V>>();
     }
 
     public Iterator<ConsumerRecord<K, V>> iterator() {
-    	if(consumberRecords  != null){
+        if (consumberRecords != null) {
             return consumberRecords.iterator();
-    	}else{
-    		return new ArrayList<ConsumerRecord<K, V>>().iterator();
-    	}
+        } else {
+            return new ArrayList<ConsumerRecord<K, V>>().iterator();
+        }
 
     }
 
@@ -44,8 +46,9 @@ public class ConsumerRecords<K, V> implements Iterable<ConsumerRecord<K, V>>, Se
 
     }
 
-	@Override
-	public String toString() {
-		return "ConsumerRecords [consumberRecords=" + consumberRecords + ", onlyTag=" + onlyTag + "]";
-	}
+    @Override
+    public String toString() {
+        return "ConsumerRecords [consumberRecords=" + consumberRecords + ", onlyTag=" + onlyTag + "]";
+    }
+
 }

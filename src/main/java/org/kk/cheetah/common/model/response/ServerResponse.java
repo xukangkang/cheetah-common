@@ -11,4 +11,8 @@ package org.kk.cheetah.common.model.response;
 
 public interface ServerResponse {
     String getOnlyTag();
+
+    String getErrorMsg();
+
+    void setErrorMsg(String errorMsg);
 }

@@ -2,7 +2,7 @@ package org.kk.cheetah.common.model.response;
 
 import java.io.Serializable;
 
-public class ProducerRecord implements ServerResponse, Serializable {
+public class ProducerRecord extends AbstractServerResponse implements Serializable {
     private String dataId;
 
     private long offset;
@@ -26,4 +26,5 @@ public class ProducerRecord implements ServerResponse, Serializable {
     public String getOnlyTag() {
         return dataId;
     }
+
 }

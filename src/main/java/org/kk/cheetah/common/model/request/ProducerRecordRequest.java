@@ -12,7 +12,7 @@ public class ProducerRecordRequest<K, V> implements ClientRequest, Serializable 
     private V data;
     private K key;
 
-    public ProducerRecordRequest(String topic, K key, V data) {
+    public ProducerRecordRequest(K key, V data) {
         this.data = data;
     }
 

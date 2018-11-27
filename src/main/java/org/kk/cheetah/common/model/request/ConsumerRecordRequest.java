@@ -7,15 +7,19 @@ import org.msgpack.annotation.MessagePackBeans;
 @MessagePackBeans
 public class ConsumerRecordRequest implements ClientRequest, Serializable {
 
-    @Override
-    public String toString() {
-        return "ConsumerRecordRequest [group=" + group + ", clientId=" + clientId + "]";
-    }
-
     private String group;
     private String clientId;
     private int maxPollNum;
     private String pollTag;
+    private String topic;
+
+    public String getTopic() {
+        return topic;
+    }
+
+    public void setTopic(String topic) {
+        this.topic = topic;
+    }
 
     public String getPollTag() {
         return pollTag;
@@ -55,6 +59,7 @@ public class ConsumerRecordRequest implements ClientRequest, Serializable {
         int result = 1;
         result = prime * result + ((clientId == null) ? 0 : clientId.hashCode());
         result = prime * result + ((group == null) ? 0 : group.hashCode());
+        result = prime * result + ((topic == null) ? 0 : topic.hashCode());
         return result;
     }
 
@@ -77,7 +82,18 @@ public class ConsumerRecordRequest implements ClientRequest, Serializable {
                 return false;
         } else if (!group.equals(other.group))
             return false;
+        if (topic == null) {
+            if (other.topic != null)
+                return false;
+        } else if (!topic.equals(other.topic))
+            return false;
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "ConsumerRecordRequest [group=" + group + ", clientId=" + clientId + ", maxPollNum=" + maxPollNum
+                + ", pollTag=" + pollTag + ", topic=" + topic + "]";
     }
 
 }
