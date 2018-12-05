@@ -2,15 +2,11 @@ package org.kk.cheetah.common.model.response;
 
 import java.io.Serializable;
 
-import org.msgpack.annotation.Message;
-
-@Message
 public class ConsumerRecord<K, V> implements Serializable {
 
     private K key;
     private V data;
     private long offset;
-    private String test;
     private String topic;
 
     public String getTopic() {
@@ -19,14 +15,6 @@ public class ConsumerRecord<K, V> implements Serializable {
 
     public void setTopic(String topic) {
         this.topic = topic;
-    }
-
-    public String getTest() {
-        return test;
-    }
-
-    public void setTest(String test) {
-        this.test = test;
     }
 
     public K getKey() {
@@ -55,6 +43,7 @@ public class ConsumerRecord<K, V> implements Serializable {
 
     @Override
     public String toString() {
-        return "ConsumerRecord [key=" + key + ", data=" + data + ", offset=" + offset + ", test=" + test + "]";
+        return "ConsumerRecord [key=" + key + ", data=" + data + ", offset=" + offset + ", topic=" + topic + "]";
     }
+
 }

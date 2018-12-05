@@ -1,5 +1,7 @@
 package org.kk.cheetah.common.serializable;
 
+import java.io.IOException;
+
 import org.jboss.marshalling.MarshallerFactory;
 import org.jboss.marshalling.Marshalling;
 import org.jboss.marshalling.MarshallingConfiguration;
@@ -29,7 +31,7 @@ public class MarshallingCodeCFactory {
                 marshallerFactory, configuration);
         // 构建Netty的MarshallingDecoder对象，俩个参数分别为provider和单个消息序列化后的最大长度
         MarshallingDecoder decoder = new MarshallingDecoder(provider,
-                1024 * 1024 * 1);
+                1024 * 1024 * 100);
         return decoder;
     }
 
@@ -37,8 +39,9 @@ public class MarshallingCodeCFactory {
      * 创建Jboss Marshalling编码器MarshallingEncoder
      * 
      * @return MarshallingEncoder
+     * @throws IOException 
      */
-    public static MarshallingEncoder buildMarshallingEncoder() {
+    public static MarshallingEncoder buildMarshallingEncoder() throws IOException {
         final MarshallerFactory marshallerFactory = Marshalling
                 .getProvidedMarshallerFactory("serial");
         final MarshallingConfiguration configuration = new MarshallingConfiguration();
